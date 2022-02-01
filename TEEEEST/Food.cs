@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEEEEST
 {
-    internal class Food : GameObject
+    internal class Food : GameObject //Nu ska vi bli klara och få VG!
     {
         public Food() // constructor
         {
