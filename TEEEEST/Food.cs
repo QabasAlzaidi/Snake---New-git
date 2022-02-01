@@ -10,7 +10,7 @@ namespace TEEEEST
     {
         public Food() // constructor
         {
-           
+          //vi är alla duktiga
         }
 
         public override void Update() //an empty Update method
