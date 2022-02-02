@@ -17,7 +17,7 @@ namespace TEEEEST
 
 
             // Console-fönstret enligt världens storlek --- Skapa Mapp strukturen åt er :) 
-            //Console.SetWindowSize(50, 20);
+           Console.SetWindowSize(70, 50);
 
 
             world = gameWorld;
@@ -33,6 +33,7 @@ namespace TEEEEST
 
                 Console.SetCursorPosition(world.GameObjects[0].position.X, world.GameObjects[0].position.Y);
                 Console.Write(world.GameObjects[0].Apperance);
+          
 
             /*
             for (int i = 0; i <= (world.Bredd + 2); i++)

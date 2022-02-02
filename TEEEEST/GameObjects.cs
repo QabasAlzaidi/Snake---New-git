@@ -15,6 +15,7 @@ namespace TEEEEST
 
         public Position position;
         public char Apperance;
+        public Player player;
 
         public abstract void Update();
     }

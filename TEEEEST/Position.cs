@@ -11,6 +11,12 @@ namespace TEEEEST
     {
         public int X;
         public int Y;
+        public int foodposition;
+       
+      
+
     }
+   
+
 }
 

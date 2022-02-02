@@ -14,8 +14,10 @@ static void Loop()
 
     // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
 
-        Player Snake = new Player();    
-        world.GameObjects.Add(Snake);   
+
+
+    Player Snake = new Player();
+    world.GameObjects.Add(Snake);
     // ...
 
     // Huvudloopen
@@ -28,7 +30,7 @@ static void Loop()
         // Hantera knapptryckningar från användaren
         ConsoleKey key = ReadKeyIfExists();
         switch (key)
-        {
+        { // TODO Lägg till logik för andra knapptryckningar
             case ConsoleKey.Q:
                 running = false;
                 break;
@@ -39,17 +41,17 @@ static void Loop()
                 break;
 
             case ConsoleKey.A:
+                Snake.SetDirection(Player.Direction.vänster);
                 break;
 
             case ConsoleKey.S:
+                Snake.SetDirection(Player.Direction.ner);
                 break;
 
             case ConsoleKey.D:
-
+                Snake.SetDirection(Player.Direction.höger);
                 break;
 
-                // TODO Lägg till logik för andra knapptryckningar
-                // ...
         }
 
         // Uppdatera världen och rendera om

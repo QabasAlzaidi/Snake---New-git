@@ -16,6 +16,7 @@ namespace TEEEEST
         public int Bredd;
         public int Höjd;
         public int poäng;
+        public string player;
 
         public List<GameObject> GameObjects;
 
@@ -34,6 +35,12 @@ namespace TEEEEST
             {
                 obj.Update();
             }
+
+            //if (obj == Food)
+
+            //        if(Food.Position == Player) ..... 
+
+                
         }
 
         public void AddGameObject(GameObject gameObject)
