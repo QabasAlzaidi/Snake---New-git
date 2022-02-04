@@ -18,41 +18,43 @@ namespace TEEEEST
         }
 
         public Direction playerD;
-
-        private string playerDirection = "";
-
-
-
-        public Player()
+        public Player(Position newPosition)
         {
-
-            Position startPostion = new Position() { X = 10, Y = 10 };
-
-            position = startPostion;
+            position = newPosition;
             Apperance = '$';
             playerD = Direction.upp;
-            playerDirection = "Höger";
-
         }
-
         public void SetDirection(Direction direction)
         {
             playerD = direction;
         }
-
-
-        public override void Update()
-
+        public void ControlPosition()// kontrollerar ormens position , att inte går ut ur kanten
         {
-
+            if (position.X > 49)// äntligen lyckades jag med en sak till i kväll =)
+            {
+                position.X = 0;
+            }
+            else if (position.Y > 19)
+            {
+                position.Y = 0;
+            }
+            else if (position.X < 0)
+            {
+                position.X = 49;
+            }
+            else if (position.Y < 0)
+            {
+                position.Y = 19;
+            }
+        }
+        public override void Update()
+        {
             if (playerD == Direction.upp)
             {
                 position.Y -= 1;
                 ControlPosition();
-
             }
-            else if
-               (playerD == Direction.ner)
+            else if (playerD == Direction.ner)
             {
                 position.Y += 1;
                 ControlPosition();
@@ -66,7 +68,6 @@ namespace TEEEEST
             {
                 position.X += 1;
                 ControlPosition();
-
             }
         }
     }

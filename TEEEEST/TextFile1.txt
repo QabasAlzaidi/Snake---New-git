@@ -1,0 +1,2 @@
+﻿1. Score 
+2. when the snake eats food, no score increament

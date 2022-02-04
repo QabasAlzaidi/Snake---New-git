@@ -4,7 +4,7 @@
 
 
 
-//diala
+
 
 /// <summary>
 /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
@@ -20,16 +20,10 @@ static void Loop()
 
     // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
 
-    Player Snake = new Player();
+    Player Snake = new Player(new Position(25, 10));
     world.GameObjects.Add(Snake);
-    //Food orgfood = world.Creatfood();
-
-
-    Food snakeFood = new Food();
-    world.GameObjects.Add(snakeFood);
-
-
-    // ...
+    Food orgfood = world.CreatFood();
+    world.GameObjects.Add(orgfood);
 
     // Huvudloopen
     bool running = true;
@@ -83,8 +77,12 @@ static void Loop()
             // Vänta rätt antal millisekunder innan loopens nästa varv
             Thread.Sleep((int)frameTime);
         }
+
+
     }
 }
+
+
 
 // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
 

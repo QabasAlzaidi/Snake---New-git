@@ -13,13 +13,12 @@ namespace TEEEEST
 
     internal class GameWorld
     {
-        public int Bredd;
-        public int Höjd;
-        public int poäng;
+        public int Bredd { get; set; }
+        public int Höjd { get; set; }
+        public int poäng { get; set; }
 
 
-        public List<GameObject> GameObjects;
-
+        public List<GameObject> GameObjects = new List<GameObject>();
         public GameWorld()
         {
             Bredd = 50;
@@ -35,17 +34,68 @@ namespace TEEEEST
             foreach (var obj in GameObjects)// en loop som kontrollerar mat position och orms position att de inte krockas
             {
                 obj.Update();
-                //    if (obj is mattbiten) // när vi skappar mattbiten !!!!!
-                //    {
-                //        GameObjects.Remove(matbitten);
-                //        GameObjects.Add(obj); 
-                //        poäng++;    
-                //        Console.Write(poäng); obs inte saker om den ska skrivas här eller på program.cs!!
-                //    } 
             }
-            //if (!matbien)
-            //    Console.Write("0");
+            Position playerPosition = new Position(0, 0);
+            Position foodPosition = new Position(0, 0);
+
+            int foodIndex = 0;
+
+
+            for (int i = 0; i < GameObjects.Count; i++)
+            {
+                if (GameObjects[i] is Player)
+                {
+                    if (GameObjects[i].position.X >= 49)
+                    {
+                        GameObjects[i].position.X = 0;
+                    }
+                    else if (GameObjects[i].position.X <= 1)
+                    {
+                        GameObjects[i].position.X = 49;
+                    }
+                    else if (GameObjects[i].position.Y >= 49)
+                    {
+                        GameObjects[i].position.Y = 0;
+                    }
+                    else if (GameObjects[i].position.Y <= 1)
+                    {
+                        GameObjects[i].position.Y = 0;
+                    }
+                    playerPosition = GameObjects[i].position;
+                }
+                else if (GameObjects[i] is Food)
+                {
+                    foodIndex = i;
+                    foodPosition = GameObjects[i].position;
+                }
+
+
+            }
+            if (playerPosition == foodPosition)
+            {
+                poäng++;
+                GameObjects.RemoveAt(foodIndex);
+                GameObjects.Add(CreatFood());
+
+            }
+
+
+
         }
+        public Food CreatFood()
+        {
+            Random r = new Random();
+
+            int x = r.Next(2, 28);
+            int y = r.Next(2, 10);
+            Food feed = new Food(new Position(x, y));
+            return feed;
+
+        }
+
+
+
+
 
         public void AddGameObject(GameObject gameObject)
         {

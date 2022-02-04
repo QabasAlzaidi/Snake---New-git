@@ -21,44 +21,49 @@ namespace TEEEEST
             Console.SetWindowSize(50, 20);
 
 
+
             world = gameWorld;
         }
 
         public void Render()
         {
+            foreach (var gameObject in world.GameObjects)
+            {
+                Console.SetCursorPosition(gameObject.position.X, gameObject.position.Y);
+                Console.Write(gameObject.Apperance);
+
+            }
+            for (int i = 0; i <= 1; i++) // to add walls 
+            {
+                Console.SetCursorPosition(4, 28);
+                Console.Write("|");
+            }
+            for (int i = 0; i <= 1; i++) // to add walls 
+            {
+                Console.SetCursorPosition(35, 10);
+                Console.Write("|");
+            }
+
+            for (int i = 0; i <= 1; i++)
+            {
+                Console.SetCursorPosition(0, 0);
+                Console.Write("Score: ");
+            }
 
 
-            Console.SetCursorPosition(world.GameObjects[0].position.X, world.GameObjects[0].position.Y);
-            Console.Write(world.GameObjects[0].Apperance);
-
-
-
-            //for (int i = 0; i <= (world.Bredd + 1); i++)
-            //{
-            //    Console.SetCursorPosition(i, 1);
-            //    Console.Write("_");
-            //}
-            //for (int i = 0; i <= (world.Bredd + 1); i++)
-            //{
-            //    Console.SetCursorPosition(i, (world.Höjd + 1));
-            //    Console.Write("_");
-            //}
-            //for (int i = 0; i <= (world.Höjd + 1); i++)
-            //{
-            //    Console.SetCursorPosition(1, i);
-            //    Console.Write("|");
-            //}
             //for (int i = 0; i <= (world.Höjd +1); i++)
             //{
             //    Console.SetCursorPosition((world.Bredd + 1), i);
             //    Console.Write("|");
             //}
-
         }
         public void RenderBlank()
         {
-            Console.SetCursorPosition(world.GameObjects[0].position.X, world.GameObjects[0].position.Y);
-            Console.Write(" ");
+            foreach (var gameObject in world.GameObjects)
+            {
+                Console.SetCursorPosition(gameObject.position.X, gameObject.position.Y);
+                Console.Write(" ");
+            }
         }
     }
 }

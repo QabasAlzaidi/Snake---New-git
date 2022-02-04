@@ -12,14 +12,11 @@ namespace TEEEEST
         public int X;
         public int Y;
 
-        public Position()
-        {
-        }
 
-        public Position(int X, int Y)
+        public Position(int x, int y)
         {
-            X = X;
-            Y = Y;
+            X = x;
+            Y = y;
         }
     }
 }
