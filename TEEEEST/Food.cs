@@ -6,26 +6,62 @@ using System.Threading.Tasks;
 
 namespace TEEEEST
 {
-    internal class Food : GameObject 
+    class Food : GameObject
     {
-        int mapWidht;
-        int mapHeight;
-        char sym;
 
-        Random random = new Random();
+        public char Icon { get; set; }
 
-        public Food(int mapWidht, int mapHeight, char sym)
+        public Food(int x, int y)
         {
-            this.mapWidht = mapWidht;
-            this.mapHeight = mapHeight;
-            this.sym = sym;
+            Icon = '0';
+            Apperance.X = y;
+
+
         }
 
+        //private string FoodSnakDirection = "";
 
-        public override void Update()
+
+        //public Food(Position position, char Apperance)
+        //{
+
+        //    Position Random = new Position ();
+        //    position = Random;
+        //    Apperance = '0';
+        //    Random random = new Random();
+        //    FoodSnakDirection = "Höger";  
+
+        ////bool upp, ner, vänster, höger;
+        //}
+
+        //public Food()
+        //{
+        //}
+
+
+        public override void Update() //an empty Update method
         {
-            int x = random.Next(2, mapWidht - 2); // creating food 
-            int y = random.Next(2, mapHeight - 2);
-            return new Point(x, y, sym);
+
+
+            //position.X = random.Next(2, world.Bredd- 2);
+            //return new Position(X, Y,);
+            //if (snakeFood == SnakDirection.upp)
+            //{
+            //    position.Y = 1;
+            //}
+            //if (snakeFood == SnakDirection.ner)
+            //{
+            //    position.Y += 1;
+            //}
+            //if (snakeFood == SnakDirection.vänster)
+            //{
+            //    position.X -= 1;
+            //}
+            //if (snakeFood == SnakDirection.höger)
+            //{
+            //    position.X += 1;
+
+            //}
         }
+    }
 }

@@ -11,12 +11,17 @@ namespace TEEEEST
     {
         public int X;
         public int Y;
-        public int foodposition;
-       
-      
-        // test
-    }
-   
 
+        public Position()
+        {
+        }
+
+        public Position(int X, int Y)
+        {
+            X = X;
+            Y = Y;
+        }
+    }
+}
 }
 

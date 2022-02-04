@@ -1,6 +1,6 @@
 ﻿using TEEEEST;
 
-/// <summary>
+/// <summary> MAIN**
 /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
 /// </summary>
 static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
@@ -14,10 +14,15 @@ static void Loop()
 
     // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
 
-
-
     Player Snake = new Player();
     world.GameObjects.Add(Snake);
+    Food orgfood = world.Creatfood();
+
+
+    Food snakeFood = new Food();
+    world.GameObjects.Add(snakeFood);
+
+
     // ...
 
     // Huvudloopen
@@ -30,7 +35,7 @@ static void Loop()
         // Hantera knapptryckningar från användaren
         ConsoleKey key = ReadKeyIfExists();
         switch (key)
-        { // TODO Lägg till logik för andra knapptryckningar
+        {
             case ConsoleKey.Q:
                 running = false;
                 break;
@@ -40,23 +45,30 @@ static void Loop()
 
                 break;
 
-            case ConsoleKey.A:
-                Snake.SetDirection(Player.Direction.vänster);
-                break;
-
             case ConsoleKey.S:
                 Snake.SetDirection(Player.Direction.ner);
                 break;
 
-            case ConsoleKey.D:
-                Snake.SetDirection(Player.Direction.höger);
+            case ConsoleKey.A:
+                Snake.SetDirection(Player.Direction.vänster);
                 break;
 
+            case ConsoleKey.D:
+                Snake.SetDirection(Player.Direction.höger);
+
+                break;
+
+                // TODO Lägg till logik för andra knapptryckningar
+                // ...
         }
 
         // Uppdatera världen och rendera om
+
+
+        renderer.RenderBlank();
         world.Update();
         renderer.Render();
+
 
         // Mät hur lång tid det tog
         double frameTime = Math.Ceiling((1000.0 / frameRate) - (DateTime.Now - before).TotalMilliseconds);
@@ -72,5 +84,12 @@ static void Loop()
 
 //ConsoleRenderer A = new ConsoleRenderer;
 //A.WriteBoard();
-//Console.ReadKey();
+
+//Console.ForegroundColor = ConsoleColor.Cyan;
+//Console.WriteLine("Press 'enter' to start the game :)");
+
+//Console.ReadLine();
+//Console.ResetColor();
+
+
 Loop();

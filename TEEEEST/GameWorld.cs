@@ -16,7 +16,7 @@ namespace TEEEEST
         public int Bredd;
         public int Höjd;
         public int poäng;
-        public string player;
+
 
         public List<GameObject> GameObjects;
 
@@ -25,27 +25,34 @@ namespace TEEEEST
             Bredd = 50;
             Höjd = 20;
             poäng = 0;
+
             GameObjects = new List<GameObject>();
         }
 
         public void Update()
         {
             // TODO
-            foreach (var obj in GameObjects)
+            foreach (var obj in GameObjects)// en loop som kontrollerar mat position och orms position att de inte krockas
             {
                 obj.Update();
+                //    if (obj is mattbiten) // när vi skappar mattbiten !!!!!
+                //    {
+                //        GameObjects.Remove(matbitten);
+                //        GameObjects.Add(obj); 
+                //        poäng++;    
+                //        Console.Write(poäng); obs inte saker om den ska skrivas här eller på program.cs!!
+                //    } 
             }
-
-            //if (obj == Food)
-
-            //        if(Food.Position == Player) ..... 
-
-                
+            //if (!matbien)
+            //    Console.Write("0");
         }
 
         public void AddGameObject(GameObject gameObject)
         {
             GameObjects.Add(gameObject);
         }
+
+
+
     }
 }
