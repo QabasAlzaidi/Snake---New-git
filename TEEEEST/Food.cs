@@ -5,19 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TEEEEST
+
 {
     class Food : GameObject
     {
 
         public char Icon { get; set; }
 
-        public Food(int x, int y)
-        {
-            Icon = '0';
-            Apperance.X = y;
+        //public Food(int x, int y)
+        //{
+        //    //Icon = '0';
+        //    Apperance.X = y;
 
 
-        }
+        //}
 
         //private string FoodSnakDirection = "";
 

@@ -1,6 +1,12 @@
 ﻿using TEEEEST;
 
-/// <summary> MAIN**
+
+
+
+
+//diala
+
+/// <summary>
 /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
 /// </summary>
 static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
@@ -16,7 +22,7 @@ static void Loop()
 
     Player Snake = new Player();
     world.GameObjects.Add(Snake);
-    Food orgfood = world.Creatfood();
+    //Food orgfood = world.Creatfood();
 
 
     Food snakeFood = new Food();
