@@ -37,6 +37,7 @@ namespace TEEEEST
             }
             Position playerPosition = new Position(0, 0);
             Position foodPosition = new Position(0, 0);
+            Position wallPosition = new Position(0, 0)
 
             int foodIndex = 0;
 
@@ -68,17 +69,21 @@ namespace TEEEEST
                     foodIndex = i;
                     foodPosition = GameObjects[i].position;
                 }
+                else if (playerPosition == wallPosition) // if the snake eats the food, increase the score and change food position
+                {
 
+                    Console.WriteLine("You died, and you score is: " + poäng + "Game over!! :(");
+                }
 
             }
-            if (playerPosition == foodPosition)
+
+
+            if (playerPosition == foodPosition) // if the snake eats the food, increase the score and change food position
             {
                 poäng++;
                 GameObjects.RemoveAt(foodIndex);
                 GameObjects.Add(CreatFood());
-
             }
-
 
 
         }
@@ -92,9 +97,6 @@ namespace TEEEEST
             return feed;
 
         }
-
-
-
 
 
         public void AddGameObject(GameObject gameObject)
