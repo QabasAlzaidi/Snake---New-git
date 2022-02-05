@@ -18,6 +18,11 @@ namespace TEEEEST
         }
 
         public Direction playerD;
+
+        public Player () //to create an object  without parameters 
+        {
+
+        }
         public Player(Position newPosition)
         {
             position = newPosition;
@@ -44,6 +49,7 @@ namespace TEEEEST
             }
             else if (position.Y < 0)
             {
+                System.Diagnostics.Debug.WriteLine("player class LINE 47 position x " + position.X + " position y " + position.Y);
                 position.Y = 19;
             }
         }
@@ -52,45 +58,27 @@ namespace TEEEEST
             if (playerD == Direction.upp)
             {
                 position.Y -= 1;
-                Console.SetCursorPosition(50, 20);
-                Console.Write(" X ");
-                Console.Write(position.X);
-                Console.Write(" P ");
-                Console.Write(" Y ");
-                Console.Write(position.Y);
+               // Console.SetCursorPosition(50, 20);
+                System.Diagnostics.Debug.WriteLine("Player class LINE 59 position x " + position.X + " position y " + position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.ner)
             {
                 position.Y += 1;
-                Console.SetCursorPosition(50, 20);
-                Console.Write(" X ");
-                Console.Write(position.X);
-                Console.Write(" P ");
-                Console.Write(" Y ");
-                Console.Write(position.Y);
+                //Console.SetCursorPosition(50, 20);
                 ControlPosition();
             }
             else if (playerD == Direction.vänster)
             {
                 position.X -= 1;
-                Console.SetCursorPosition(50, 20);
-                Console.Write(" X ");
-                Console.Write(position.X);
-                Console.Write(" P ");
-                Console.Write(" Y ");
-                Console.Write(position.Y);
+                //Console.SetCursorPosition(50, 20);
+                System.Diagnostics.Debug.WriteLine("Player class LINE 85 position x " + position.X + " position y " + position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.höger)
             {
                 position.X += 1;
-                Console.SetCursorPosition(50, 20);
-                Console.Write(" X ");
-                Console.Write(position.X);
-                Console.Write(" P ");
-                Console.Write(" Y ");
-                Console.Write(position.Y);
+                //Console.SetCursorPosition(50, 20);
                 ControlPosition();
             }
         }

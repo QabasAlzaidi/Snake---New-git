@@ -29,22 +29,22 @@ namespace TEEEEST
                 Console.Write(gameObject.Apperance);
             }
             
-            for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
-            {
-                Console.SetCursorPosition(4, 28);
-                Console.Write("|");
-            }
+            //for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
+            //{
+            //    Console.SetCursorPosition(4, 28);
+            //    Console.Write("|");
+            //}
             
-            for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
-            {
-                Console.SetCursorPosition(35, 10);
-                Console.Write("|");
-            }
+            //for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
+            //{
+            //    Console.SetCursorPosition(35, 10);
+            //    Console.Write("|");
+            //}
 
             for (int i = 0; i <= 1; i++) // score
             {
                 Console.SetCursorPosition(0, 0);
-                Console.Write("Score: ");
+                Console.Write("Score: " + world.poäng);
             }
 
 

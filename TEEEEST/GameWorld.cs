@@ -35,66 +35,115 @@ namespace TEEEEST
             {
                 obj.Update();
             }
+
+            
             Position playerPosition = new Position(0, 0);
             Position foodPosition = new Position(0, 0);
-            Position wallPosition = new Position(0, 0)
-
+            Position wallPosition = new Position(0, 0);
+            
             int foodIndex = 0;
+            int wallIndex = 0;
 
+            //GameObjects.RemoveAt(1);
+            
 
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 if (GameObjects[i] is Player)
                 {
-                    if (GameObjects[i].position.X >= 49)
-                    {
-                        GameObjects[i].position.X = 0;
-                    }
-                    else if (GameObjects[i].position.X <= 1)
-                    {
-                        GameObjects[i].position.X = 49;
-                    }
-                    else if (GameObjects[i].position.Y >= 49)
-                    {
-                        GameObjects[i].position.Y = 0;
-                    }
-                    else if (GameObjects[i].position.Y <= 1)
-                    {
-                        GameObjects[i].position.Y = 0;
-                    }
                     playerPosition = GameObjects[i].position;
                 }
                 else if (GameObjects[i] is Food)
+                    {
+                        foodPosition = GameObjects[i].position;
+                        foodIndex = i;
+                    }
+                else if (GameObjects[i] is Wall)
                 {
-                    foodIndex = i;
-                    foodPosition = GameObjects[i].position;
-                }
-                else if (playerPosition == wallPosition) // if the snake eats the food, increase the score and change food position
-                {
+                    wallPosition = GameObjects[i].position;
+                    wallIndex = i;
 
-                    Console.WriteLine("You died, and you score is: " + poäng + "Game over!! :(");
                 }
-
             }
 
 
-            if (playerPosition == foodPosition) // if the snake eats the food, increase the score and change food position
+            //for (int i = 0; i < GameObjects.Count; i++)
+            //{
+            //    if (GameObjects[i] is Player)
+            //    {
+            //        if (GameObjects[i].position.X > 49)
+            //        {
+            //            GameObjects[i].position.X = 0;
+            //        }
+            //        else if (GameObjects[i].position.X < 1)
+            //        {
+            //            GameObjects[i].position.X += 1;
+            //        }
+            //        else if (GameObjects[i].position.Y > 19)
+            //        {
+            //            GameObjects[i].position.Y += 19;
+            //        }
+            //        else if (GameObjects[i].position.Y < 1)
+            //        {
+            //            GameObjects[i].position.Y -= 0;
+            //        }
+            //        playerPosition = GameObjects[i].position;
+            //    }
+            //    else if (GameObjects[i] is Food)
+            //    {
+            //        foodIndex = i;
+            //        foodPosition = GameObjects[i].position;
+            //    }
+            //    else if (playerPosition == wallPosition) // if the snake eats the food, increase the score and change food position
+            //    {
+
+            //        Console.WriteLine("You died, and you score is: " + poäng + "Game over!! :(");
+            //    }
+
+            //}
+
+            System.Diagnostics.Debug.WriteLine("Game world class lINE 81 " + playerPosition.X + " px " + foodPosition.X + " fx " + playerPosition.Y + " py " + foodPosition.Y + " fy " );
+
+            if (playerPosition.X == foodPosition.X  && playerPosition.Y == foodPosition.Y) // if the snake eats the food, increase the score and change food position
             {
                 poäng++;
                 GameObjects.RemoveAt(foodIndex);
                 GameObjects.Add(CreatFood());
             }
 
+            if (playerPosition.X == wallPosition.X && playerPosition.Y == wallPosition.Y) // if the snake hits the wall, its game over
+            {
+                throw new SystemException("Wall crash!");
+                clearGameList();
+                Console.WriteLine("You died, and you score is: " + poäng + "Game over!! :( ");
+            }
 
         }
+
+
+
+        private void clearGameList() 
+        {
+            for (int i = GameObjects.Count - 1; i > 0; i--)
+            {
+                GameObjects.RemoveAt(i);
+            }
+
+        }
+
         public Food CreatFood()
         {
             Random r = new Random();
 
-            int x = r.Next(2, 28);
-            int y = r.Next(2, 10);
+            int x = r.Next(12, 31);
+            int y = r.Next(5, 10);
             Food feed = new Food(new Position(x, y));
             return feed;
+
+            //while (x == Wall.position.x && y == Wall.position.Y)
+            //{
+
+            //}
 
         }
 

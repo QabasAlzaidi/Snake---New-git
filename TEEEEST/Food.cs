@@ -15,7 +15,7 @@ namespace TEEEEST
             Apperance = 'o';
         }
 
-        public override void Update() //an empty Update method
+        public override void Update() 
         {
 
         }

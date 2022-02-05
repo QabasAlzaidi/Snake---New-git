@@ -1,2 +1,7 @@
-﻿1. Score 
-2. when the snake eats food, no score increament
+﻿1. Score .. done
+2. when the snake eats food, no score increament .. done
+3. wall, food doest spawn in wall place ,, done
+
+4. gameworld class . global var boolean = true , gets false if the snake hits the wall ,, instead of the exteption
+5. in programm class we read the bool, instead of running as a condition of the while loop  
+
