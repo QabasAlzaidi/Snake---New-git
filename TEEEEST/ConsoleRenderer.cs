@@ -14,13 +14,9 @@ namespace TEEEEST
         {
             // TODO Konfigurera
 
-
-
             Console.CursorVisible = false;
             // Console-fönstret enligt världens storlek --- Skapa Mapp strukturen åt er :) 
             Console.SetWindowSize(50, 20);
-
-
 
             world = gameWorld;
         }
@@ -31,20 +27,21 @@ namespace TEEEEST
             {
                 Console.SetCursorPosition(gameObject.position.X, gameObject.position.Y);
                 Console.Write(gameObject.Apperance);
-
             }
-            for (int i = 0; i <= 1; i++) // to add walls 
+            
+            for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
             {
                 Console.SetCursorPosition(4, 28);
                 Console.Write("|");
             }
-            for (int i = 0; i <= 1; i++) // to add walls 
+            
+            for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
             {
                 Console.SetCursorPosition(35, 10);
                 Console.Write("|");
             }
 
-            for (int i = 0; i <= 1; i++)
+            for (int i = 0; i <= 1; i++) // score
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Score: ");

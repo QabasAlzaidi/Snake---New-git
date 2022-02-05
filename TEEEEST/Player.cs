@@ -52,21 +52,45 @@ namespace TEEEEST
             if (playerD == Direction.upp)
             {
                 position.Y -= 1;
+                Console.SetCursorPosition(50, 20);
+                Console.Write(" X ");
+                Console.Write(position.X);
+                Console.Write(" P ");
+                Console.Write(" Y ");
+                Console.Write(position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.ner)
             {
                 position.Y += 1;
+                Console.SetCursorPosition(50, 20);
+                Console.Write(" X ");
+                Console.Write(position.X);
+                Console.Write(" P ");
+                Console.Write(" Y ");
+                Console.Write(position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.vänster)
             {
                 position.X -= 1;
+                Console.SetCursorPosition(50, 20);
+                Console.Write(" X ");
+                Console.Write(position.X);
+                Console.Write(" P ");
+                Console.Write(" Y ");
+                Console.Write(position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.höger)
             {
                 position.X += 1;
+                Console.SetCursorPosition(50, 20);
+                Console.Write(" X ");
+                Console.Write(position.X);
+                Console.Write(" P ");
+                Console.Write(" Y ");
+                Console.Write(position.Y);
                 ControlPosition();
             }
         }

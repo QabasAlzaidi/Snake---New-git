@@ -1,11 +1,5 @@
 ﻿using TEEEEST;
 
-
-
-
-
-
-
 /// <summary>
 /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
 /// </summary>
@@ -42,7 +36,6 @@ static void Loop()
 
             case ConsoleKey.W:
                 Snake.SetDirection(Player.Direction.upp);
-
                 break;
 
             case ConsoleKey.S:
@@ -55,7 +48,6 @@ static void Loop()
 
             case ConsoleKey.D:
                 Snake.SetDirection(Player.Direction.höger);
-
                 break;
 
                 // TODO Lägg till logik för andra knapptryckningar
@@ -69,7 +61,6 @@ static void Loop()
         world.Update();
         renderer.Render();
 
-
         // Mät hur lång tid det tog
         double frameTime = Math.Ceiling((1000.0 / frameRate) - (DateTime.Now - before).TotalMilliseconds);
         if (frameTime > 0)
@@ -78,11 +69,10 @@ static void Loop()
             Thread.Sleep((int)frameTime);
         }
 
-
     }
 }
 
-
+Loop();
 
 // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
 
@@ -96,4 +86,3 @@ static void Loop()
 //Console.ResetColor();
 
 
-Loop();

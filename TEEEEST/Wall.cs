@@ -12,7 +12,6 @@ namespace TEEEEST
         {
             position = wallPosition;
             Apperance = '|';
-
         }
 
         public override void Update()
