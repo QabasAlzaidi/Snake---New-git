@@ -1,4 +1,6 @@
-﻿using TEEEEST;
+﻿
+using TEEEEST;
+
 
 /// <summary>
 /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
@@ -7,13 +9,15 @@ static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(in
 
 static void Loop()
 {
+    bool running = true;
+    GameWorld world = new GameWorld();
     try
     {
 
 
         // Initialisera spelet
         const int frameRate = 5;
-        GameWorld world = new GameWorld();
+       
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
         // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
@@ -30,11 +34,13 @@ static void Loop()
 
         Wall wallOne = new Wall(new Position(5, 12));
         Wall wallTwo = new Wall(new Position(33, 11));
+        wallOne.WallNumber = 1;
+        wallTwo.WallNumber = 2;
         world.GameObjects.Add(wallOne);
         world.GameObjects.Add(wallTwo);
 
         // Huvudloopen
-        bool running = true;
+        
         while (running)
         {
             // Kom ihåg vad klockan var i början
@@ -64,12 +70,8 @@ static void Loop()
                     Snake.SetDirection(Player.Direction.höger);
                     break;
 
-
-                    // ...
             }
-
             // Uppdatera världen och rendera om
-
 
             renderer.RenderBlank();
             world.Update();
@@ -88,22 +90,34 @@ static void Loop()
     }
     catch (Exception ex) //to crash to program when the snake hits the wall, (managed error)
     {
-        if (ex.Message.Contains("Wall crash!!"))
+        //CustomMessage theMessage = new CustomMessage();
+        //world.GameObjects.Add(theMessage);
+        
+        Console.SetCursorPosition(1, 10);
+        Console.WriteLine("Opps you died,  Game over!! :(");
 
-            System.Diagnostics.Debug.WriteLine(ex.Message);
-            Console.ReadKey();
+        //Console.WriteLine("Opps you died,  Game over!! :( ");
+
+        //if (ex.Message.Contains("Wall crash!!"))
+           
+        //System.Diagnostics.Debug.WriteLine(ex.Message);
+        //    Console.ReadKey();
     }
 
 }
 
+
+
 Loop();
 
-static void WriteGameOver()
-    {
-        //Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("You lose 😦 Press 'enter' to quit the game.");
-        Console.ReadLine();
-    }
+
+
+//static void WriteGameOver()
+//    {
+//        //Console.ForegroundColor = ConsoleColor.Red;
+//        Console.WriteLine("You lose 😦 Press 'enter' to quit the game.");
+//        Console.ReadLine();
+//    }
 
 // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
 

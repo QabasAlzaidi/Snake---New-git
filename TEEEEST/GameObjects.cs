@@ -16,6 +16,7 @@ namespace TEEEEST
         public Position position;
         public char Apperance;
         public Wall wall;
+        
 
         public abstract void Update();
 

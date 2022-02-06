@@ -8,6 +8,8 @@ namespace TEEEEST
 {
     internal class Wall : GameObject
     {
+        public int WallNumber { get; set; }
+
         public Wall(Position wallPosition)
         {
             position = wallPosition;

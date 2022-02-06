@@ -39,8 +39,9 @@ namespace TEEEEST
             
             Position playerPosition = new Position(0, 0);
             Position foodPosition = new Position(0, 0);
-            Position wallPosition = new Position(0, 0);
-            
+            Position wallOnePosition = new Position(0, 0);
+            Position wallTwoPosition = new Position(0, 0);
+
             int foodIndex = 0;
             int wallIndex = 0;
 
@@ -60,10 +61,22 @@ namespace TEEEEST
                     }
                 else if (GameObjects[i] is Wall)
                 {
-                    wallPosition = GameObjects[i].position;
-                    wallIndex = i;
+                   Wall firstWall = (Wall)GameObjects[i];
+                   Wall secondWall = (Wall)GameObjects[i];
 
+                    if (firstWall.WallNumber == 1)
+                    {
+                        wallOnePosition = GameObjects[i].position;  
+                    }
+
+                   else if (secondWall.WallNumber == 2)
+                   {
+                        wallTwoPosition = GameObjects[i].position;  
+                   }
+                    
+                wallIndex = i;
                 }
+                
             }
 
 
@@ -110,12 +123,12 @@ namespace TEEEEST
                 GameObjects.RemoveAt(foodIndex);
                 GameObjects.Add(CreatFood());
             }
-
-            if (playerPosition.X == wallPosition.X && playerPosition.Y == wallPosition.Y) // if the snake hits the wall, its game over
+            
+            if ((playerPosition.X == wallOnePosition.X && playerPosition.Y == wallOnePosition.Y) || (playerPosition.X == wallTwoPosition.X && playerPosition.Y == wallTwoPosition.Y)) // if the snake hits the wall, its game over
             {
                 throw new SystemException("Wall crash!");
-                clearGameList();
-                Console.WriteLine("You died, and you score is: " + poäng + "Game over!! :( ");
+                //clearGameList();
+                Console.WriteLine("Opps you died,  Game over!! :( ");
             }
 
         }
