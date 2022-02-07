@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace TEEEEST
 {
-    //Skapa en abstrakt klass GameObject med en variabel "position" (av typen Position från ovan)
-    //samt en char-variabel "appearance" för dess utseende (vilket tecken som ska skrivas ut på skärmen för den).
-    //Ge också klassen en abstrakt void-metod Update().
+
     internal abstract class GameObject
     {
-        // TODO
+
+        /// <summary>
+        /// This class creates the objects like position, the charecter or the apperance of the snake, food, and wall.
+        /// </summary>
 
         public Position position;
         public char Apperance;
         public Wall wall;
-        
+        public ConsoleColor color = ConsoleColor.Blue;
+
 
         public abstract void Update();
 

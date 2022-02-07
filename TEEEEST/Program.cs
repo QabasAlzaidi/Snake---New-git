@@ -3,8 +3,11 @@ using TEEEEST;
 
 
 /// <summary>
-/// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
+/// The twist that we added to this program is, we added two walls that represents an obsticale 
+/// that if the snake hits a wall the game will end (gameover).
 /// </summary>
+
+
 static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
 
 static void Loop()
@@ -14,23 +17,19 @@ static void Loop()
     try
     {
 
-
         // Initialisera spelet
         const int frameRate = 5;
-       
+
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
-        // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
+        // Skapa spelare och andra objekt, genom korrekta anrop till vår GameWorld-instans
 
         Player Snake = new Player(new Position(25, 10));
-        System.Diagnostics.Debug.WriteLine("LINE 18 position x " + Snake.position.X + " position y " + Snake.position.Y);
         world.GameObjects.Add(Snake);
-        System.Diagnostics.Debug.WriteLine("LINE 20 position x " + Snake.position.X + " position y " + Snake.position.Y);
 
         Food orgfood = world.CreatFood();
-        System.Diagnostics.Debug.WriteLine("LINE 23 position x " + Snake.position.X + " position y " + Snake.position.Y);
         world.GameObjects.Add(orgfood);
-        System.Diagnostics.Debug.WriteLine("LINE 25 position x " + Snake.position.X + " position y " + Snake.position.Y);
+        //System.Diagnostics.Debug.WriteLine("LINE 25 position x " + Snake.position.X + " position y " + Snake.position.Y);
 
         Wall wallOne = new Wall(new Position(5, 12));
         Wall wallTwo = new Wall(new Position(33, 11));
@@ -40,7 +39,7 @@ static void Loop()
         world.GameObjects.Add(wallTwo);
 
         // Huvudloopen
-        
+
         while (running)
         {
             // Kom ihåg vad klockan var i början
@@ -48,8 +47,9 @@ static void Loop()
 
             // Hantera knapptryckningar från användaren
             ConsoleKey key = ReadKeyIfExists();
+
             switch (key)
-            {// TODO Lägg till logik för andra knapptryckningar
+            {// logik för andra knapptryckningar (W, A, S, D)
                 case ConsoleKey.Q:
                     running = false;
                     break;
@@ -75,7 +75,6 @@ static void Loop()
 
             renderer.RenderBlank();
             world.Update();
-            System.Diagnostics.Debug.WriteLine("LINE 67 position x " + Snake.position.X + " position y " + Snake.position.Y);
             renderer.Render();
 
             // Mät hur lång tid det tog
@@ -85,49 +84,17 @@ static void Loop()
                 // Vänta rätt antal millisekunder innan loopens nästa varv
                 Thread.Sleep((int)frameTime);
             }
-        }  
-    
+        }
+
     }
     catch (Exception ex) //to crash to program when the snake hits the wall, (managed error)
     {
-        //CustomMessage theMessage = new CustomMessage();
-        //world.GameObjects.Add(theMessage);
-        
+
         Console.SetCursorPosition(1, 10);
-        Console.WriteLine("Opps you died,  Game over!! :(");
-
-        //Console.WriteLine("Opps you died,  Game over!! :( ");
-
-        //if (ex.Message.Contains("Wall crash!!"))
-           
-        //System.Diagnostics.Debug.WriteLine(ex.Message);
-        //    Console.ReadKey();
+        Console.WriteLine("Opps you hit a wall!,  Game over!! :(");
+        Console.ForegroundColor = ConsoleColor.Red;
     }
 
 }
 
-
-
 Loop();
-
-
-
-//static void WriteGameOver()
-//    {
-//        //Console.ForegroundColor = ConsoleColor.Red;
-//        Console.WriteLine("You lose 😦 Press 'enter' to quit the game.");
-//        Console.ReadLine();
-//    }
-
-// Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
-
-//ConsoleRenderer A = new ConsoleRenderer;
-//A.WriteBoard();
-
-//Console.ForegroundColor = ConsoleColor.Cyan;
-//Console.WriteLine("Press 'enter' to start the game :)");
-
-//Console.ReadLine();
-//Console.ResetColor();
-
-

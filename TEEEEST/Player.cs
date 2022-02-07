@@ -8,10 +8,12 @@ namespace TEEEEST
 {
     internal class Player : GameObject
 
-    {//Skapa klassen Player som ärver från GameObject.
-     //Ge den en ordentlig konstruktor och en variabel som håller reda på spelarens riktning (upp, ner, vänster, höger - det kan vara en sträng eller en enum).
-     //Implementera metoden Update() så att den, beroende på spelarens riktning,
-     //flyttar sin position ett steg i rätt riktning.
+    {
+        /// <summary>
+        /// Setting the directions which the player will move (right, left, up, down) , and what keys that are clicked 
+        /// to move the snake (W, A, S, D)
+        /// </summary>
+
         public enum Direction
         {
             upp, ner, höger, vänster
@@ -19,7 +21,7 @@ namespace TEEEEST
 
         public Direction playerD;
 
-        public Player () //to create an object  without parameters 
+        public Player() //to create an object  without parameters 
         {
 
         }
@@ -33,9 +35,12 @@ namespace TEEEEST
         {
             playerD = direction;
         }
-        public void ControlPosition()// kontrollerar ormens position , att inte går ut ur kanten
+        /// <summary>
+        /// The snake keeps moving even if it hits the edges.
+        /// </summary>
+        public void ControlPosition()
         {
-            if (position.X > 49)// äntligen lyckades jag med en sak till i kväll =)
+            if (position.X > 49)
             {
                 position.X = 0;
             }
@@ -49,7 +54,6 @@ namespace TEEEEST
             }
             else if (position.Y < 0)
             {
-                System.Diagnostics.Debug.WriteLine("player class LINE 47 position x " + position.X + " position y " + position.Y);
                 position.Y = 19;
             }
         }
@@ -58,27 +62,21 @@ namespace TEEEEST
             if (playerD == Direction.upp)
             {
                 position.Y -= 1;
-               // Console.SetCursorPosition(50, 20);
-                System.Diagnostics.Debug.WriteLine("Player class LINE 59 position x " + position.X + " position y " + position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.ner)
             {
                 position.Y += 1;
-                //Console.SetCursorPosition(50, 20);
                 ControlPosition();
             }
             else if (playerD == Direction.vänster)
             {
                 position.X -= 1;
-                //Console.SetCursorPosition(50, 20);
-                System.Diagnostics.Debug.WriteLine("Player class LINE 85 position x " + position.X + " position y " + position.Y);
                 ControlPosition();
             }
             else if (playerD == Direction.höger)
             {
                 position.X += 1;
-                //Console.SetCursorPosition(50, 20);
                 ControlPosition();
             }
         }

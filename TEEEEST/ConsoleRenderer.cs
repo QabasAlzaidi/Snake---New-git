@@ -5,22 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TEEEEST
-{  //sensible size (eg 50x20).
+{
     internal class ConsoleRenderer
     {
+        /// <summary>
+        /// This class creates the window of our program.
+        /// How big is the window, and the object inside this window.
+        /// </summary>
+
         private GameWorld world;
 
+        /// <summary>
+        /// set the size of the program's window
+        /// </summary>
+        /// <param name="gameWorld"></param>
         public ConsoleRenderer(GameWorld gameWorld)
         {
-            // TODO Konfigurera
-
             Console.CursorVisible = false;
-            // Console-fönstret enligt världens storlek --- Skapa Mapp strukturen åt er :) 
             Console.SetWindowSize(50, 20);
-
             world = gameWorld;
         }
 
+        /// <summary>
+        /// To render our objects (snake, food, wall) in our program
+        /// </summary>
         public void Render()
         {
             foreach (var gameObject in world.GameObjects)
@@ -28,34 +36,23 @@ namespace TEEEEST
                 Console.SetCursorPosition(gameObject.position.X, gameObject.position.Y);
                 Console.Write(gameObject.Apperance);
             }
-            
-            //for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
-            //{
-            //    Console.SetCursorPosition(4, 28);
-            //    Console.Write("|");
-            //}
-            
-            //for (int i = 0; i <= 1; i++) // to create an obsticle (walls) 
-            //{
-            //    Console.SetCursorPosition(35, 10);
-            //    Console.Write("|");
-            //}
 
-            for (int i = 0; i <= 1; i++) // score
+
+
+            for (int i = 0; i <= 1; i++) // to add the score of the program
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Score: " + world.poäng);
             }
 
-
-            //for (int i = 0; i <= (world.Höjd +1); i++)
-            //{
-            //    Console.SetCursorPosition((world.Bredd + 1), i);
-            //    Console.Write("|");
-            //}
         }
+        /// <summary>
+        /// This removes the trail of the snake, and the window stops blinking
+        /// </summary>
+
         public void RenderBlank()
         {
+
             foreach (var gameObject in world.GameObjects)
             {
                 Console.SetCursorPosition(gameObject.position.X, gameObject.position.Y);

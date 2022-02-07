@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TEEEEST
 {
-    //Create a Class Position with two fields X and Y.
+    /// <summary>
+    /// This class creates the X and Y, which are the position in our program game.
+    /// The X and Y determines the positions of all our objects.
+    /// </summary>
+
     internal class Position
     {
         public int X;
