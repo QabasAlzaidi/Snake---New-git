@@ -32,7 +32,7 @@ static void Loop()
         //System.Diagnostics.Debug.WriteLine("LINE 25 position x " + Snake.position.X + " position y " + Snake.position.Y);
 
         Wall wallOne = new Wall(new Position(5, 12));
-        Wall wallTwo = new Wall(new Position(33, 11));
+        Wall wallTwo = new Wall(new Position(43, 7));
         wallOne.WallNumber = 1;
         wallTwo.WallNumber = 2;
         world.GameObjects.Add(wallOne);
