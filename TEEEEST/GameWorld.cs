@@ -105,8 +105,8 @@ namespace TEEEEST
         public Food CreatFood()
         {
             Random r = new Random();
-            int x = r.Next(5, 31);
-            int y = r.Next(5, 10);
+            int x = r.Next(5, 42);
+            int y = r.Next(5, 18);
             Food feed = new Food(new Position(x, y));
             return feed;
         }
